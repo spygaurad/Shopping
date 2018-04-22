@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show($id)
     {
         return view('customer.show',['customer'=> Customer::findOrFail($id)]);
